@@ -1,19 +1,61 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDom from "react-dom";
+import GuestList from "./state/GuestList";
+import UserSearch from "./state/UserSearch";
+// import EventComponent from "./events/EventComponent";
+import styled from "styled-components";
+import GlobalStyle from "./styles/globalStyles";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const Container = styled.div`
+  display: flex;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  flex-direction: column;
+  margin: 25px auto;
+  padding: 15px 0;
+
+  h1 {
+    font-size: 2rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  /* width: 100vh; */
+  flex-direction: column;
+  height: 100vh;
+  /* margin: 25px; */
+`;
+const App = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <Container>
+        <ContentWrapper>
+          <TitleWrapper>
+            <h1>Learning TypeScript</h1>
+          </TitleWrapper>
+          <UserSearch />
+          {/* <EventComponent /> */}
+        </ContentWrapper>
+      </Container>
+    </>
+  );
+};
+
+ReactDom.render(<App />, document.getElementById("root"));
